@@ -37,5 +37,15 @@
     </div>
 </div>
 
+<div class="comment">
+    <form action="" method="post">
+        {% csrf_token %}
+        your id:<input type="text" name="user_name"/>
+        your email:<input type="text" name="user_email"/>
+        your comment:<input type="text" name="user_comment"/>
+        <input type="submit">
+    </form>
+</div>
+
 </body>
 </html>
