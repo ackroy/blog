@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <style>
+        .blog {
+            padding: 20px 0px;
+        }
+        .blog .info span {
+            padding-right: 10px;
+        }
+        .blog .summary {
+            padding-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<div class="header">
+    <h1></h1>
+</div>
+
+<div class="blog">
+    <div class="title">
+        <h2>{{ blog_detail.title }}</h2>
+    </div>
+    <div class="info">
+        <span class="category" style="color: #ff9900;">{{ blog_detail.classification.name }}</span>
+        <span class="created" style="color: #6aa84f">{{ blog_detail.publish_time|date:"Y-m-d H:i" }}</span>
+    </div>
+    <div class="blog_content">
+        {{ blog_detail.content }}
+    </div>
+</div>
+
+</body>
+</html>

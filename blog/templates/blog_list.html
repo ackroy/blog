@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}"
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,11 +27,10 @@
 {% for blog in latest_article_list %}
 <div class="blog">
     <div class="title">
-        <a href="#"><h2>{{ blog.title }}</h2></a>
+        <a href="/blog/{{ blog.id }}"><h2>{{ blog.title }}</h2></a>
     </div>
     <div class="info">
         <span class="category" style="color: #ff9900;">{{ blog.classification.name }}</span>
-        <!--<span class="author" style="color: #4a86e8">{{ blog.author }}</span>-->
         <span class="created" style="color: #6aa84f">{{ blog.publish_time|date:"Y-m-d H:i" }}</span>
     </div>
     <div class="summary">
