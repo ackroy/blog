@@ -1,15 +1,12 @@
 from django.shortcuts import get_object_or_404, render
 from blog.models import Article, Classification
-from django.template import RequestContext, loader
-from django.http import HttpResponse
-from django import template
+from django.template import RequestContext
+from django.db.models import Count
 
 
 def article_list(request):
-    # latest_article_list = Article.objects.order_by('-publish_time')[:5]
-    # template = loader.get_template('blog/index.html')
     latest_article_list = Article.objects.all()
-    blog_in_classification = Classification.objects.all()
+    blog_in_classification = Classification.objects.annotate(class_count=Count('article')).order_by('-class_count')
     context = RequestContext(request, {
         'latest_article_list': latest_article_list,
         'blog_in_classification': blog_in_classification,
@@ -25,4 +22,10 @@ def artical_detail(request, blog_id):
     return render(request, 'blog_detail.html', context)
 
 
-
+def class_detail(request, class_id):
+    # find all the articles whose classification id=class_id
+    detail = Article.objects.filter(classification__id=class_id)
+    context = RequestContext(request, {
+        'detail': detail,
+    })
+    return render(request, 'class_detail.html', context)

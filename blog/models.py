@@ -12,6 +12,7 @@ from django.db import models
 
 class Classification(models.Model):
     name = models.CharField(max_length=20)
+    # article_num = models.IntegerField()
 
     def __unicode__(self):
         return self.name
@@ -36,9 +37,5 @@ class Comment(models.Model):
     email = models.EmailField()
     content = models.CharField(max_length=200)
     created_time = models.DateTimeField(auto_now_add=True)
-
-
-
-
 
 

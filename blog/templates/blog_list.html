@@ -42,8 +42,11 @@
 {% for classification in blog_in_classification %}
 <div class="classification">
     <div class="class_title">
-        <h2>{{ classification.name }}</h2>
+        <a href="cate/{{ classification.id }}">
+        <h2>{{ classification.name }} {{ classification.class_count }}</h2>
+        </a>
     </div>
+
 </div>
 {% endfor %}
 
