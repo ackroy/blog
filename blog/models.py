@@ -10,7 +10,7 @@ from django.db import models
 #         return self.tag_name
 
 
-class Classification(models.Model):
+class Category(models.Model):
     name = models.CharField(max_length=20)
     # article_num = models.IntegerField()
 
@@ -18,11 +18,11 @@ class Classification(models.Model):
         return self.name
 
 
-class Article(models.Model):
+class Blog(models.Model):
     title = models.CharField(max_length=50)
     # author = models.ForeignKey(Author)
     # tags = models.ManyToManyField(Tag, blank=True)
-    classification = models.ForeignKey(Classification)
+    category = models.ForeignKey(Category)
     content = models.TextField()
     publish_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now_add=True)
@@ -32,7 +32,7 @@ class Article(models.Model):
 
 
 class Comment(models.Model):
-    blog = models.ForeignKey(Article)
+    blog = models.ForeignKey(Blog)
     name = models.CharField(max_length=16)
     email = models.EmailField()
     content = models.CharField(max_length=200)

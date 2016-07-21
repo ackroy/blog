@@ -24,13 +24,13 @@
     <h1>My Blogs</h1>
 </div>
 
-{% for blog in latest_article_list %}
+{% for blog in latest_blog_list %}
 <div class="blog">
     <div class="title">
         <a href="/blog/{{ blog.id }}"><h2>{{ blog.title }}</h2></a>
     </div>
     <div class="info">
-        <span class="category" style="color: #ff9900;">{{ blog.classification.name }}</span>
+        <span class="category" style="color: #ff9900;">{{ blog.category.name }}</span>
         <span class="created" style="color: #6aa84f">{{ blog.publish_time|date:"Y-m-d H:i" }}</span>
     </div>
     <div class="summary">
@@ -39,11 +39,11 @@
 </div>
 {% endfor %}
 
-{% for classification in blog_in_classification %}
-<div class="classification">
-    <div class="class_title">
-        <a href="cate/{{ classification.id }}">
-        <h2>{{ classification.name }} {{ classification.class_count }}</h2>
+{% for cat in blog_in_cat %}
+<div class="cat">
+    <div class="cat_name">
+        <a href="cat={{ cat.id }}">
+        <h2>{{ cat.name }} {{ cat.cat_counter }}</h2>
         </a>
     </div>
 

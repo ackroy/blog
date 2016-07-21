@@ -1,31 +1,31 @@
 from django.shortcuts import get_object_or_404, render
-from blog.models import Article, Classification
+from blog.models import Blog, Category
 from django.template import RequestContext
 from django.db.models import Count
 
 
-def article_list(request):
-    latest_article_list = Article.objects.all()
-    blog_in_classification = Classification.objects.annotate(class_count=Count('article')).order_by('-class_count')
+def index(request):
+    latest_blog_list = Blog.objects.all()
+    blog_in_cat = Category.objects.annotate(cat_counter=Count('blog')).order_by('-cat_counter')
     context = RequestContext(request, {
-        'latest_article_list': latest_article_list,
-        'blog_in_classification': blog_in_classification,
+        'latest_blog_list': latest_blog_list,
+        'blog_in_cat': blog_in_cat,
     })
     return render(request, 'blog_list.html', context)
 
 
-def artical_detail(request, blog_id):
-    blog_detail = get_object_or_404(Article, pk=blog_id)
+def blog_detail(request, blog_id):
+    detail = get_object_or_404(Blog, pk=blog_id)
     context = RequestContext(request, {
-        'blog_detail': blog_detail,
+        'blog_detail': detail,
     })
     return render(request, 'blog_detail.html', context)
 
 
-def class_detail(request, class_id):
+def cat_detail(request, cat_id):
     # find all the articles whose classification id=class_id
-    detail = Article.objects.filter(classification__id=class_id)
+    detail = Blog.objects.filter(category__id=cat_id)
     context = RequestContext(request, {
         'detail': detail,
     })
-    return render(request, 'class_detail.html', context)
+    return render(request, 'cat_detail.html', context)
