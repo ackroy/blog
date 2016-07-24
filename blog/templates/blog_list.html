@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}"
+<link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,8 +15,11 @@
         .blog .summary {
             padding-top: 20px;
         }
-
     </style>
+
+    <link href="/static/ckeditor/ckeditor/plugins/codesnippet/lib/highlight/styles/default.css" rel="stylesheet">
+    <script src="/static/ckeditor/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 

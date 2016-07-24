@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
-
+from ckeditor.fields import RichTextField
 
 # class Tag(models.Model):
 #     tag_name = models.CharField(max_length=10)
@@ -23,7 +23,7 @@ class Blog(models.Model):
     # author = models.ForeignKey(Author)
     # tags = models.ManyToManyField(Tag, blank=True)
     category = models.ForeignKey(Category)
-    content = models.TextField()
+    content = RichTextField();
     publish_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now_add=True)
 

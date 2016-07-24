@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, render
 from blog.models import Blog, Category
 from django.template import RequestContext
 from django.db.models import Count
+from django.conf import settings
 
 
 def index(request):
@@ -16,6 +17,7 @@ def index(request):
 
 def blog_detail(request, blog_id):
     detail = get_object_or_404(Blog, pk=blog_id)
+    detail.content = detail.content.decode('utf8')
     context = RequestContext(request, {
         'blog_detail': detail,
     })
@@ -29,3 +31,14 @@ def cat_detail(request, cat_id):
         'detail': detail,
     })
     return render(request, 'cat_detail.html', context)
+
+
+def test(request):
+    context = RequestContext(request, {
+        # 'base_dir': settings.BASE_DIR,
+        # 'static_URL': settings.STATIC_URL,
+        # 'static_dir': settings.STATIC_ROOT,
+        # 'staticfiles_dir': settings.STATICFILES_DIRS,
+    })
+    return render(request, 'test.html', context)
+

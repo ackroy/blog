@@ -1,3 +1,4 @@
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls import url
 
 from . import views
@@ -14,4 +15,9 @@ urlpatterns = [
 
     # show blog with same category
     url(r'^cat=(?P<cat_id>[0-9]+)/$', views.cat_detail, name='cat'),
+
+    url(r'^test', views.test, name='test')
 ]
+
+
+urlpatterns += staticfiles_urlpatterns()
