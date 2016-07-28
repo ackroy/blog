@@ -42,3 +42,9 @@ def test(request):
     })
     return render(request, 'test.html', context)
 
+
+def blog_index(request):
+    context = RequestContext(request, {
+
+    })
+    return render(request, 'index.html', context)
