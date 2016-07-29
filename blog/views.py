@@ -12,7 +12,7 @@ def index(request):
         'latest_blog_list': latest_blog_list,
         'blog_in_cat': blog_in_cat,
     })
-    return render(request, 'blog_list.html', context)
+    return render(request, 'index.html', context)
 
 
 def blog_detail(request, blog_id):
