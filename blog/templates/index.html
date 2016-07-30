@@ -39,30 +39,30 @@
 
 {% endblock %}
 
+{% block pagenation %}
+<ul class="pagination">
+    {% if latest_blog_list.has_previous %}
+    <li><a href="?page={{ latest_blog_list.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+    <li class="active"><a>&laquo;</a></li>
+    {% endif %}
 
-<!--<ul class="pagination">-->
+    {% for p in latest_blog_list.paginator.page_range %}
+    {% ifequal p latest_blog_list.number %}
+    <li class="active"><a>{{p}}</a></li>
+    {% else %}
+    <li><a href="?page={{p}}" title="第{{p}}页">{{p}}</a>
+    <li>
+    {% endifequal %}
+    {% endfor %}
 
-<!--{% if blog_infos.has_previous %}-->
-<!--<li><a href="?page={{ blog_infos.previous_page_number }}">&laquo;</a></li>-->
-<!--{% else %}-->
-<!--<li class="active"><a>&laquo;</a></li>-->
-<!--{% endif %}-->
-
-<!--{% for p in page_range %}-->
-<!--{% ifequal p blog_infos.number %}-->
-<!--<li class="active"><a>{{p}}</a></li>-->
-<!--{% else %}-->
-<!--<li><a href="?page={{p}}" title="第{{p}}页">{{p}}</a><li>-->
-<!--{% endifequal %}-->
-<!--{% endfor %}-->
-
-<!--{% if blog_infos.has_next %}-->
-<!--<li><a href="?page={{ blog_infos.next_page_number }}">&raquo;</a></li>-->
-<!--{% else %}-->
-<!--<li class="active"> <a>&raquo;</a></li>-->
-<!--{% endif %}-->
-<!--</ul>-->
-
+    {% if latest_blog_list.has_next %}
+    <li><a href="?page={{ latest_blog_list.next_page_number }}">&raquo;</a></li>
+    {% else %}
+    <li class="active"><a>&raquo;</a></li>
+    {% endif %}
+</ul>
+{% endblock %}
 
 {% block lastest_blog %}
 

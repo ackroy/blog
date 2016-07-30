@@ -20,10 +20,8 @@ class Category(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(max_length=50)
-    # author = models.ForeignKey(Author)
-    # tags = models.ManyToManyField(Tag, blank=True)
     category = models.ForeignKey(Category)
-    content = RichTextField();
+    content = RichTextField()
     publish_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now_add=True)
 
@@ -35,7 +33,7 @@ class Comment(models.Model):
     blog = models.ForeignKey(Blog)
     name = models.CharField(max_length=16)
     email = models.EmailField()
-    content = models.CharField(max_length=200)
+    content = RichTextField()
     created_time = models.DateTimeField(auto_now_add=True)
 
 

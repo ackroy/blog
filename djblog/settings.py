@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'ckeditor',
+    'ckeditor_uploader',
     # 'compressor'
+    # 'pagination',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -49,6 +51,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'pagination.middleware.PaginationMiddleware',
 ]
 
 ROOT_URLCONF = 'djblog.urls'
@@ -163,3 +166,38 @@ CKEDITOR_CONFIGS = {
 #         'extraPlugins': 'codesnippet',
 #    },
 # }
+
+MEDIA_ROOT = (os.path.join(BASE_DIR, 'blog/upload').replace('\\', '/'),)
+MEDIA_URL = '/media/'
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'blog',
+        'USER': 'root',
+        'PASSWORD': 'wuguocheng',
+        'HOST': '',
+        'PORT': '8000',
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

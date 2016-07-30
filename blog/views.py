@@ -2,14 +2,25 @@ from django.shortcuts import get_object_or_404, render
 from blog.models import Blog, Category
 from django.template import RequestContext
 from django.db.models import Count
-from django.conf import settings
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def index(request):
     latest_blog_list = Blog.objects.all()
+
+    paginator = Paginator(latest_blog_list, 5)
+    page = request.GET.get('page')
+    try:
+        latest_blog = paginator.page(page)
+    except PageNotAnInteger:
+        latest_blog = paginator.page(1)
+    except EmptyPage:
+        latest_blog = paginator.page(paginator.num_pages)
+
     blog_in_cat = Category.objects.annotate(cat_counter=Count('blog')).order_by('-cat_counter')
+
     context = RequestContext(request, {
-        'latest_blog_list': latest_blog_list,
+        'latest_blog_list': latest_blog,
         'blog_in_cat': blog_in_cat,
     })
     return render(request, 'index.html', context)
@@ -19,9 +30,9 @@ def blog_detail(request, blog_id):
     detail = get_object_or_404(Blog, pk=blog_id)
     detail.content = detail.content.decode('utf8')
     context = RequestContext(request, {
-        'blog_detail': detail,
+        'blog': detail,
     })
-    return render(request, 'blog_detail.html', context)
+    return render(request, 'detail.html', context)
 
 
 def cat_detail(request, cat_id):

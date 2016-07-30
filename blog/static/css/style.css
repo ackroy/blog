@@ -366,7 +366,6 @@ url-prefix()
 
 #return_top{
 	position: fixed;
-	display: none;
 	bottom:3rem;
 	right: 3rem;
 	z-index: 5;
