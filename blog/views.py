@@ -1,3 +1,5 @@
+#coding:utf-8
+
 from django.shortcuts import get_object_or_404, render
 from blog.models import Blog, Category
 from django.template import RequestContext
@@ -28,7 +30,7 @@ def index(request):
 
 def blog_detail(request, blog_id):
     detail = get_object_or_404(Blog, pk=blog_id)
-    detail.content = detail.content.decode('utf8')
+    # detail.content = detail.content.decode('utf8')
     context = RequestContext(request, {
         'blog': detail,
     })
