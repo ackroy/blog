@@ -167,8 +167,9 @@ CKEDITOR_CONFIGS = {
 #    },
 # }
 
-MEDIA_ROOT = (os.path.join(BASE_DIR, 'blog/upload').replace('\\', '/'),)
+MEDIA_ROOT = (os.path.join(BASE_DIR, 'blog/upload/').replace('\\', '/'),)
 MEDIA_URL = '/media/'
+
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
 DATABASES = {
