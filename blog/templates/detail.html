@@ -15,7 +15,8 @@
     <link rel="stylesheet" type="text/css" href="/static/css/detail.css">
 
 
-    <link href="/static/ckeditor/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-forest.light.css" rel="stylesheet">
+    <link href="/static/ckeditor/ckeditor/plugins/codesnippet/lib/highlight/styles/atelier-forest.light.css"
+          rel="stylesheet">
     <script src="/static/ckeditor/ckeditor/plugins/codesnippet/lib/highlight/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 
@@ -61,6 +62,9 @@
                         href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友">QQ好友</a></div>
                 <script>
                     window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"分享 Rickard 的文章 「 {{ blog.title}} 」 --刘文图熙1895","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+
+
+
                 </script>
 
 
@@ -74,13 +78,31 @@
                 {{ blog.content|safe }}
             </div>
 
+            <div id="comments">
+                <!-- 多说评论框 start -->
+                <div class="ds-thread" data-thread-key="{{ blog_detail.id }}" data-title="blog_detail.title"
+                     data-url="http://rickard1117.com/blog/blog_detail.id"></div>
+            </div>
+            <!-- 多说评论框 end -->
+            <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+            <script type="text/javascript">
+var duoshuoQuery = {short_name:"rickard1117"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
 
+            </script>
+            <!-- 多说公共JS代码 end -->
 
 
             <div class="hidden-xs">
                 {% include "footer.html" %}
             </div>
-
         </div>
     </div>
 </div>
@@ -91,9 +113,6 @@
 
 <script src="/static/js/jquery-1.11.3.min.js"></script>
 <script src="/static/js/bootstrap/bootstrap.min.js"></script>
-
-
-
 
 
 </body>
