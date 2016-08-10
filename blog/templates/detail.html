@@ -39,9 +39,9 @@
                 <nav class="navbar navbar-inverse" role="navigation" id="navibar">
                     <ul class="nav navbar-nav">
                         <li><a href="/">首页</a></li>
-                        <li><a href="/geek">技术博客</a></li>
-                        <li><a href="/essay">随笔</a></li>
-                        <li><a href="/joke">瞎扯</a></li>
+                        <li><a href="/blog/tech">技术博客</a></li>
+                        <li><a href="/blog/essay">生活随笔</a></li>
+
                     </ul>
                 </nav>
             </div>
@@ -80,8 +80,8 @@
 
             <div id="comments">
                 <!-- 多说评论框 start -->
-                <div class="ds-thread" data-thread-key="{{ blog_detail.id }}" data-title="blog_detail.title"
-                     data-url="http://rickard1117.com/blog/blog_detail.id"></div>
+                <div class="ds-thread" data-thread-key="{{ blog.id }}" data-title="{{ blog.title }}"
+                     data-url="http://rickard1117.com/blog/{{ blog.id }}"></div>
             </div>
             <!-- 多说评论框 end -->
             <!-- 多说公共JS代码 start (一个网页只需插入一次) -->

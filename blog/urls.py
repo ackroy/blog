@@ -17,9 +17,15 @@ urlpatterns = [
     # show blog with same category
     url(r'^cat=(?P<cat_id>[0-9]+)/$', views.cat_detail, name='cat'),
 
-    url(r'^test', views.test, name='test'),
+    # url(r'^test', views.test, name='test'),
 
-    url(r'^index', views.blog_index, name='blog_index'),
+    url(r'^index$', views.blog_index, name='blog_index'),
+
+    url(r'^tech$', views.tech, name='tech_blog'),
+
+    url(r'^essay$', views.essay, name='essay_blog'),
+
+
 ]
 
 # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

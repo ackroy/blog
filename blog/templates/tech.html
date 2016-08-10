@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+技术博客_RickarD_文章列表
+
+{% endblock %}
+
+{% block seo %}
+<meta name="description" content="技术博客用于记录C/C++, Python, OS, 网络, 数据结构和算法等各种技术问题"/>
+<meta name="keywords" content="技术博客,C,Python,OS"/>
+{% endblock %}
+
+
+{% block navibar %}
+<nav class="navbar navbar-inverse" role="navigation" id="navibar">
+    <ul class="nav navbar-nav">
+        <li><a href="/">首页</a></li>
+        <li class="active"><a href="/blog/tech">技术博客</a></li>
+        <li><a href="/blog/essay">生活随笔</a></li>
+    </ul>
+</nav>
+{% endblock %}
+
+
+{% block title_list %}
+
+{% for blog in cat_blog %}
+{% include "list_style.html" %}
+{% empty %}
+<h3>这个人好懒，一个字都没写</h3>
+{% endfor %}
+{% endblock %}
+
+
+{% block pagenation %}
+<ul class="pagination">
+    {% if cat_blog.has_previous %}
+    <li><a href="?page={{ latest_blog_list.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+    <li class="active"><a>&laquo;</a></li>
+    {% endif %}
+
+    {% for p in cat_blog.paginator.page_range %}
+    {% ifequal p cat_blog.number %}
+    <li class="active"><a>{{p}}</a></li>
+    {% else %}
+    <li><a href="?page={{p}}" title="第{{p}}页">{{p}}</a>
+    <li>
+        {% endifequal %}
+        {% endfor %}
+
+        {% if cat_blog.has_next %}
+    <li><a href="?page={{ latest_blog_list.next_page_number }}">&raquo;</a></li>
+    {% else %}
+    <li class="active"><a>&raquo;</a></li>
+    {% endif %}
+</ul>
+{% endblock %}
+
+{% block lastest_blog %}
+{% for blog in tech_blogs %}
+<li><a href="/blog/{{ blog.id }}" target=_blank>{{ blog.title }}</a></li>
+{% endfor %}
+{% endblock %}
+
+
+{% block tags %}
+<h5>
+    {% include "tag_info.html" %}
+</h5>
+{% endblock %}
+

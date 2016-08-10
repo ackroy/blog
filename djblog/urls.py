@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-
+from blog import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^blog/', include('blog.urls')),
+    url(r'^$', views.index, name='index'),
+    url(r'^profile/$', views.profile, name='profile'),
+    # url(r'^tag/(?P<tag_id>[0-9]+)/$', views.tag_page, name='tag')
+    url(r'about_site/$', views.about_site, name='about_site')
 ]

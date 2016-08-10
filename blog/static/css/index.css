@@ -128,6 +128,7 @@
 }
 
 #tags h4{
+
 	text-align: left;
 	font-size: 1rem;
 	font-size: 16px;
@@ -177,6 +178,7 @@
 }
 
 #tags h5{
+    text-align: left;
 	position: relative;
 }
 
