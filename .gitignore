@@ -1,5 +1,4 @@
 *.py[cod]
-blog/migrations/*.py
 blog/migrations/*.pyc
 !blog/migrations/__init__.py
 !blog/migrations/__init__.pyc
