@@ -66,8 +66,14 @@
 
 
 {% block tags %}
-<h5>
-    {% include "tag_info.html" %}
-</h5>
+
+{% for cat in blog_in_cat %}
+<li>
+    <a href="cat={{ cat.id }}" target=_blank>
+        {{ cat.name }} {{ cat.cat_counter }}
+    </a>
+</li>
+{% endfor %}
+
 {% endblock %}
 

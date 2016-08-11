@@ -15,10 +15,10 @@ class Category(models.Model):
 
     def __unicode__(self):
         return self.name
-
-class Tag(models.Model):
-    tag = models.CharField(max_length=30, db_index=True, unique=True)
-    add_time = models.DateTimeField(auto_now_add=True)
+#
+# class Tag(models.Model):
+#     tag = models.CharField(max_length=30, db_index=True, unique=True)
+#     add_time = models.DateTimeField(auto_now_add=True)
 
 
 class Blog(models.Model):
@@ -28,7 +28,7 @@ class Blog(models.Model):
     content = RichTextField()
     publish_time = models.DateTimeField(auto_now_add=True)
     update_time = models.DateTimeField(auto_now_add=True)
-    tags = models.ManyToManyField(Tag, blank=True)
+    # tags = models.ManyToManyField(Tag, blank=True)
 
     def __unicode__(self):
         return u"%s" % self.title
